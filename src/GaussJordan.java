@@ -1,22 +1,20 @@
-//Erstellt von Sascha Vonier
-
 import java.util.Scanner;
 
 public class GaussJordan
 {
-	public void Eingabe() //wird aufgerufen, wenn der Benutzer sein eigenes LGS l�sen will
+	public void consoleInput()
 	{
-		GaussJordan gj = new GaussJordan(); //Objekt der Klasse Gausjordan wird erstellt
+		GaussJordan gj = new GaussJordan();
 		double[] row1 = {0, 0, 0, 0};
 		double[] row2 = {0, 0, 0, 0};
 		double[] row3 = {0, 0, 0, 0};
-		String[] variableVector = {"", "", ""};
-		System.out.println("Koeffizientenmatrix:\n");
-		for(int i = 1; i <= 3; i++) //die vorderen drei row-Array-Eintr�ge werden bef�llt (Koeffizientenmatirx)
+		String[] variablesVector = {"", "", ""};
+		System.out.println("Coefficient matrix:\n");
+		for(int i = 1; i <= 3; i++) //coefficient matrix is filled
 		{
 			for(int j = 1; j <= 3; j++)
 			{
-				System.out.println("\nGib den Wert f�r x" + i + "," + j + " ein:");
+				System.out.println("\nEnter the value for x:" + i + "," + j);
 				switch(i)
 				{
 				case 1:
@@ -31,46 +29,46 @@ public class GaussJordan
 			}
 		}
 
-		//der hintere row-Array-Eintrag wird bef�llt (Ergebnisvektor)
-		System.out.println("\n\nErgebnisvektor:\n\nGib den Wert f�r b1 ein:");
+		//results vector is filled
+		System.out.println("\n\nResults vector:\n\nEnter the value for b1:");
 		row1[3] = gj.readNumber();
-		System.out.println("\nGib den Wert f�r b2 ein:");
+		System.out.println("\nEnter the value for b2:");
 		row2[3] = gj.readNumber();
-		System.out.println("\nGib den Wert f�r b3 ein:");
+		System.out.println("\nEnter the value for b3:");
 		row3[3] = gj.readNumber();
 
-		//die Werte des Variablenvektors werden vom Benutzer benannt
-		System.out.println("\n\nVariablenvektor:");
+		//the values of the variable vector are named by the user
+		System.out.println("\n\nVariables vector:");
 		for(int i = 1; i <= 3; i++)
 		{
-			System.out.print("\n\nWie soll Wert " + i + " des Variablenvektors benannt werden:\n");
-			variableVector[i-1] = gj.readString();
-			if(variableVector[i-1].equals("")) //Abfrage ob der Benutzer etwas eingegeben hat
+			System.out.print("\n\nHow should value " + i + " of the variable vector be named?\n");
+			variablesVector[i-1] = gj.readString();
+			if(variablesVector[i-1].equals("")) //query whether the user has entered anything
 			{
-				System.out.print("\nGib bitte etwas ein, z.B. x1, x2, x3 oder x, y, z:\n");
+				System.out.print("\nPlease enter something like x1, x2, x3 or x, y, z:\n");
 				i--;
 			}
 		}
-		System.out.println("\n\nSind ihre Eingaben korrekt? [J/n]:\n\n");
-		System.out.println(row1[0] + " " + variableVector[0] + " + " + row1[1] + " " + variableVector[1] + " + " + row1[2] + " " + variableVector[2] + " = " + row1[3] + "\n");
-		System.out.println(row2[0] + " " + variableVector[0] + " + " + row2[1] + " " + variableVector[1] + " + " + row2[2] + " " + variableVector[2] + " = " + row2[3] + "\n");
-		System.out.println(row3[0] + " " + variableVector[0] + " + " + row3[1] + " " + variableVector[1] + " + " + row3[2] + " " + variableVector[2] + " = " + row3[3] + "\n");
+		System.out.println("\n\nAre your entries correct? [Y/n]:\n\n");
+		System.out.println(row1[0] + " " + variablesVector[0] + " + " + row1[1] + " " + variablesVector[1] + " + " + row1[2] + " " + variablesVector[2] + " = " + row1[3] + "\n");
+		System.out.println(row2[0] + " " + variablesVector[0] + " + " + row2[1] + " " + variablesVector[1] + " + " + row2[2] + " " + variablesVector[2] + " = " + row2[3] + "\n");
+		System.out.println(row3[0] + " " + variablesVector[0] + " + " + row3[1] + " " + variablesVector[1] + " + " + row3[2] + " " + variablesVector[2] + " = " + row3[3] + "\n");
 		String string = gj.readString();
 
-		if(string.equals("j") || string.equals("J") || string.equals("")) //Abfrage ob der Benutzer fortfahren m�chte
+		if(string.equals("y") || string.equals("Y") || string.equals("")) //query whether the user wants to continue
 		{
 			rechnen(row1, row2, row3);
 		}
 		else
 		{
-			System.out.println("\nProgramm wird beendet...");
+			System.out.println("\nProgram is terminated...");
 			System.exit(0);
 		}
 	}
 
-	/*Beschreibung: 	Erm�glicht eine Nutzereingabe, die auf Zahlen beschr�nkt ist, wird solange ausgef�hrt, bis der Benutzer eine richtige Zahl eingibt.
-	Parameter: 			-
-	Returnwert: 		Gibt die eingegebene Zahl zur�ck*/
+	/*Description:		If user input is restricted to numbers, it will be carried out until the user enters a correct number.
+	Parameters: 		-
+	Return value: 		Returns the entered number*/
 	private double readNumber()
 	{
 		Scanner scan = new Scanner( System.in );
@@ -85,33 +83,33 @@ public class GaussJordan
 				d = Double.parseDouble(input);
 				isDouble = true;
 			}catch(NumberFormatException e){
-				System.out.println("\n" + input + " ist keine Zahl, probiere es nochmal!");
+				System.out.println("\n" + input + " is not a number, please try again!");
 			}
 		}
 		return d;
 	}
 
-	/*Beschreibung: 	Erm�glicht eine Nutzereingabe.
-	Parameter: 			-
-	Returnwert: 		Gibt den eingegebenen Text des Benutzers zur�ck*/
+	/*Description:		Allows user input.
+	Parameters: 		-
+	Return value: 		Returns the text entered by the user*/
 	private String readString()
 	{
 		Scanner scan = new Scanner( System.in );
 		return scan.nextLine();
 	}
 
-	/*Beschreibung: 	Wendet das Gaus Jordan Verfahren beim LGS an
-	Parameter: 			rowx (Zeile1), rowy (Zeile2), rowz (Zeile3)
-	Returnwert: 		Gibt ein Array mit 4 Eintr�gen zur�ck. Der 4. Eintrag vom Array gibt an, ob es eine, keine oder unendliche L�sungen gab.
-						Bei einer L�sung stehen in den ersten drei Arrayeintr�gen die Werte */
-	public double[] rechnen(double[] rowx, double[] rowy, double[] rowz) 
+	/*Description:		Applies the gauss jordan method to the linear system
+	Parameters: 		rowX, rowY, rowZ
+	Return value: 		Returns an array with 4 entries. The 4th entry of the array indicates whether there was one, no or infinite solutions.
+						In the case of one solution, the values are in the first three array entries*/
+	public double[] rechnen(double[] rowX, double[] rowY, double[] rowZ)
 	{
 		GaussJordan gj = new GaussJordan(); //Objekt der Klasse Gausjordan wird erstellt
-		double[] row1 = rowx;
-		double[] row2 = rowy;
-		double[] row3 = rowz;
-		double[] ergebnis = {0, 0, 0, 0};
-		String[] variableVector = {"x", "y", "z"};
+		double[] row1 = rowX;
+		double[] row2 = rowY;
+		double[] row3 = rowZ;
+		double[] result = {0, 0, 0, 0};
+		String[] variablesVector = {"x", "y", "z"};
 		System.out.println("EINGABE:");
 		gj.printLine(row1, row2, row3);	
 		int i = 0;
@@ -122,20 +120,20 @@ public class GaussJordan
 			case 0:
 			default: break;
 			case 1:
-				if(row1[0] == 0 && row2[0] != 0) //Abfrage ob die erste Zeile mit einer Anderen getauscht werden muss
+				if(row1[0] == 0 && row2[0] != 0) //Query whether the first line has to be swapped with another
 				{
-					double[] placeholder = row1;
+					double[] placeHolder = row1;
 					row1 = row2;
-					row2 = placeholder;
+					row2 = placeHolder;
 				} else if(row1[0] == 0 && row3[0] != 0)
 				{
-					double[] placeholder = row1;
+					double[] placeHolder = row1;
 					row1 = row3;
-					row3 = placeholder;
+					row3 = placeHolder;
 				} else if(row1[0] == 0 && row2[0] == 0 && row3[0] == 0)
 				{
-					System.out.println("\nEs gibt keine L�sung.\n");
-					ergebnis[3] = 3;
+					System.out.println("\nThere is no solution.\n");
+					result[3] = 3;
 					i = 9;
 					break;
 				}
@@ -147,16 +145,16 @@ public class GaussJordan
 				row3 = gj.getZeroAndColumn1IsMultiplier(row3, row1);
 				break;
 			case 3:
-				if(row2[1] == 0 && row3[1] != 0) //Abfrage ob die zweite Zeile mit der Dritten getauscht werden muss
+				if(row2[1] == 0 && row3[1] != 0) //Query whether the second line has to be swapped with the third
 				{
 					double[] placeholder = row2;
 					row2 = row3;
 					row3 = placeholder;
 				} else if(row2[1] == 0 && row3[1] == 0)
 				{
-					System.out.println("\nEs gibt keine L�sung.\n");
+					System.out.println("\nThere is no solution.\n");
 					i = 9;
-					ergebnis[3] = 3;
+					result[3] = 3;
 					break;
 				}
 
@@ -165,18 +163,18 @@ public class GaussJordan
 			case 4:						
 				row3 = gj.getZeroAndColumn2IsMultiplier(row3, row2);
 
-				switch (gj.checkResult(row1, row2, row3)) //An dieser Stelle im Programm ist das Eliminationsverfahren beendet. Schaut man sich nun das Gleichungssystem an kann man genau sagen, wieviele L�sungen es gibt.
+				switch (gj.checkResult(row1, row2, row3)) //At this point in the program, the elimination process is over. If you look at the linear system you can say exactly how many solutions there are.
 				{
-				case 2: //wird reingesprungen, wenn das LGS unendlich viele L�sungen hat
+				case 2: //This is where a jump is made if the linear system has an infinite number of solutions
 					gj.printLine(row1, row2, row3);
-					System.out.println("\nEs gibt unendlich viele L�sungen.\n");
-					ergebnis[3] = 2;
+					System.out.println("\nThere are an infinite number of solutions.\n");
+					result[3] = 2;
 					i = 9;
 					break;
-				case 3: //wird reingesprungen, wenn das LGS keine L�sung hat
+				case 3: //This is where a jump is made if the linear system has no solution
 					gj.printLine(row1, row2, row3);
-					System.out.println("\nEs gibt keine L�sung.\n");
-					ergebnis[3] = 3;
+					System.out.println("\nThere is no solution.\n");
+					result[3] = 3;
 					i = 9;
 					break;
 				}
@@ -197,20 +195,20 @@ public class GaussJordan
 			i++;
 		}
 
-		if(ergebnis[3] == 0)
+		if(result[3] == 0)
 		{
-			System.out.println("Ergebnis:\n" + variableVector[0] + ": " + row1[3] + ", " + variableVector[1] + ": " + row2[3] + ", " + variableVector[2] + ": " + row3[3] + "\n");
-			ergebnis[0] = row1[3];
-			ergebnis[1] = row2[3];
-			ergebnis[2] = row3[3];
-			ergebnis[3] = 1;
+			System.out.println("Result:\n" + variablesVector[0] + ": " + row1[3] + ", " + variablesVector[1] + ": " + row2[3] + ", " + variablesVector[2] + ": " + row3[3] + "\n");
+			result[0] = row1[3];
+			result[1] = row2[3];
+			result[2] = row3[3];
+			result[3] = 1;
 		}
-		return ergebnis;
+		return result;
 	}
 
-	/*Beschreibung: 	Stellt die 3 Zeilen des LGS's dar
-	Parameter: 			row1 (Zeile1), row2 (Zeile2), row3 (Zeile3)
-	Returnwert: 		-*/
+	/*Description:		Prints the 3 lines of the linear system
+	Parameters: 		row1, row2, row3
+	Return value: 		-*/
 	private void printLine(double[] row1, double[] row2, double[] row3)
 	{
 		System.out.println(row1[0] + " | " + row1[1] + " | " + row1[2] + " || " + row1[3]);
@@ -219,14 +217,14 @@ public class GaussJordan
 		System.out.println();
 	}
 
-	/*Beschreibung: 	�berpr�ft, ob es keine, eine eindeutige oder unendlich viele L�sungen gibt. Daf�r stellt die Funktion die Stufenform mithilfe des Eliminationsverfahren her.
-	Parameter: 			row1 (Zeile1), row2 (Zeile2), row3 (Zeile3)
-	Returnwert: 		Gibt eine Integerzahl zur�ck, die darstellt, wieviele L�sungen es gibt (siehe Legende weiter unten)*/
+	/*Description:		Checks whether there are none, one clear, or an infinite number of solutions. For this, the function creates the step shape with the help of the elimination process.
+	Parameters: 		row1, row2, row3
+	Return value: 		Returns an integer that represents how many solutions there are (see legend below)*/
 	public int checkResult(double[] row1, double[] row2, double[] row3)
 	{
-		//Returnwert = 1 -> es gibt eine eindeutige L�sung (keine Zeile ist komplett null)
-		//Returnwert = 2 -> es gibt unendlich viele L�sungen (eine Zeile ist komplett null, sowie der jeweilige Ergebnisvektoreintrag)
-		//Returnwert = 3 -> es gibt keine L�sung (eine Zeile ist komplett null, der jeweilige Ergebnisvektoreintrag aber nicht)
+		//Return value = 1 -> there is a clear solution (no line is completely zero)
+		//Return value = 2 -> there are an infinite number of solutions (one line is completely zero, as well as the associated results vector entry)
+		//Return value = 3 -> there is no solution (one line is completely zero, but the associated results vector entry isn't)
 				
 		row1 = getTheOne(row1, 1);
 		row2 = getZeroAndColumn1IsMultiplier(row2, row1);
@@ -266,9 +264,9 @@ public class GaussJordan
 		}
 	}
 
-	/*Beschreibung: 	Erzeugt die ben�tigte 1 in einer vorher ausgew�hlten Zeile in der Diagonale.
-	Parameter: 			row (Zeile in der die Eins entstehen soll), whichColumn (gibt an, in welcher Spalte die 1 enstehen soll)
-	Returnwert: 		Gibt die neue Zeile mit der entstandenden Eins zur�ck*/
+	/*Description:		Generates the required 1 in a previously selected line on the diagonal
+	Parameters: 		row (row in which the one should arise), whichColumn (indicates in which column the 1 should result)
+	Return value: 		Returns the new line with the resulting one*/
 	public double[] getTheOne(double[] row, int whichColumn)
 	{
 		double divisor = 1;
@@ -291,9 +289,9 @@ public class GaussJordan
 		return row;
 	}
 
-	/*Beschreibung: 	Erzeugt eine Null in der ersten Spalte einer vorher ausgew�hlten Zeile.
-	Parameter: 			someRow (Zeile in der eine Null erzeugt werden soll), anotherRow (Zeile, mit der multipliziert wird)
-	Returnwert: 		Gibt die neue Zeile mit der entstandenden Null zur�ck*/
+	/*Description:		Creates a zero in the first column of a previously selected row.
+	Parameters: 		someRow (line in which a zero should be generated), anotherRow (line which is multiplied)
+	Return value: 		Returns the new line with the resulting zero*/
 	public double[] getZeroAndColumn1IsMultiplier(double[] someRow, double[] anotherRow)
 	{
 		someRow[1] = someRow[1] - (someRow[0] * anotherRow[1]);
@@ -304,9 +302,9 @@ public class GaussJordan
 		return someRow;
 	}
 
-	/*Beschreibung: 	Erzeugt eine Null in der zweiten Spalte einer vorher ausgew�hlten Zeile.
-	Parameter: 			someRow (Zeile in der eine Null erzeugt werden soll), anotherRow (Zeile, mit der multipliziert wird)
-	Returnwert: 		Gibt die neue Zeile mit der entstandenden Null zur�ck*/
+	/*Description:		Creates a zero in the second column of a previously selected row.
+	Parameters: 		someRow (line in which a zero should be generated), anotherRow (line which is multiplied)
+	Return value: 		Returns the new line with the resulting zero*/
 	public double[] getZeroAndColumn2IsMultiplier(double[] someRow, double[] anotherRow)
 	{
 		someRow[0] = someRow[0] - (someRow[1] * anotherRow[0]);
@@ -317,9 +315,9 @@ public class GaussJordan
 		return someRow;
 	}
 
-	/*Beschreibung: 	Erzeugt eine Null in der dritten Spalte einer vorher ausgew�hlten Zeile.
-	Parameter: 			someRow (Zeile in der eine Null erzeugt werden soll), anotherRow (Zeile, mit der multipliziert wird)
-	Returnwert: 		Gibt die neue Zeile mit der entstandenden Null zur�ck*/
+	/*Description:		Creates a zero in the third column of a previously selected row.
+	Parameters: 		someRow (line in which a zero should be generated), anotherRow (line which is multiplied)
+	Return value: 		Returns the new line with the resulting zero*/
 	public double[] getZeroAndColumn3IsMultiplier(double[] someRow, double[] anotherRow)
 	{
 		someRow[0] = someRow[0] - (someRow[2] * anotherRow[0]);
