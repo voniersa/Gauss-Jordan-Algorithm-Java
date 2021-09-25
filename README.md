@@ -15,6 +15,8 @@ For example:
 java Gauss-Jordan -row1 1,2.6,3 -row2 4,5,6 -row3 -7.2,8,9 -resultsVector 3,-4,5
 ```
 The linear systems of the example above would look like this:
+```
 1x + 4y + -7.2z = 3
 2.6x + 5y + 8z = -4
 3x + 6y + 9z = 5
+```
