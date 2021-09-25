@@ -1,7 +1,7 @@
 public class Application {
     public static void main (String[] args)
     {
-        GausJordan gj = new GausJordan();
+        GaussJordan gj = new GaussJordan();
         gj.Eingabe();
     }
 }

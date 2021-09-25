@@ -1,4 +1,4 @@
-//Erstellt von Thorben Böer
+//Erstellt von Thorben Bï¿½er
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-class GausJordanTest {
+class GaussJordanTest {
 
-	private GausJordan gj = new GausJordan(); //Objekt der Klasse GausJordan wird erzeugt
+	private GaussJordan gj = new GaussJordan(); //Objekt der Klasse GaussJordan wird erzeugt
 
-	//hier werden zunächst die einzelen Rechen Funktionen getestet
+	//hier werden zunï¿½chst die einzelen Rechen Funktionen getestet
 	@Test
 	public void getZeroAndColumn1IsMultiplierTest() 
 	{
@@ -67,21 +67,21 @@ class GausJordanTest {
 	@Test
 	public void checkResultTest()
 	{
-		//Usecase: Es gibt eine eindeutige Lösung
+		//Usecase: Es gibt eine eindeutige Lï¿½sung
 		double[] row1 = {1, 2, 3, 4};
 		double[] row2 = {0, 4, 3, 2};
 		double[] row3 = {0, 0, 5, 9};
 		int ergebnis = 1;
 		assertEquals(gj.checkResult(row1, row2, row3), ergebnis);
 
-		//Usecase: Es gibt unendlich viele Lösungen
+		//Usecase: Es gibt unendlich viele Lï¿½sungen
 		double[] rowA = {1, 2, 3, 4};
 		double[] rowB = {0, 4, 3, 2};
 		double[] rowC = {0, 0, 0, 0};
 		int ergebnisABC = 2;
 		assertEquals(gj.checkResult(rowA, rowB, rowC), ergebnisABC);
 
-		//Usecase: Es gibt keine Lösung.
+		//Usecase: Es gibt keine Lï¿½sung.
 		double[] rowX = {1, 2, 3, 4};
 		double[] rowY = {0, 4, 3, 2};
 		double[] rowZ = {0, 0, 0, 6};
@@ -89,8 +89,8 @@ class GausJordanTest {
 		assertEquals(gj.checkResult(rowX, rowY, rowZ), ergebnisXYZ);
 	}
 
-	//Bei den folgenden Tests werden die 3 Usecases getestet: 1 Lösung, unendlich viele Lösungen oder keine Lösung.
-	@Test //Usecase: das LGS hat 1 Lösung
+	//Bei den folgenden Tests werden die 3 Usecases getestet: 1 Lï¿½sung, unendlich viele Lï¿½sungen oder keine Lï¿½sung.
+	@Test //Usecase: das LGS hat 1 Lï¿½sung
 	public void eineLoesung1()
 	{
 		double ergebnis = 1;
@@ -106,7 +106,7 @@ class GausJordanTest {
 		Trennstriche();
 	}
 
-	@Test //Usecase: das LGS hat 1 Lösung (LGS wurde mit anderen Werten gefüllt)
+	@Test //Usecase: das LGS hat 1 Lï¿½sung (LGS wurde mit anderen Werten gefï¿½llt)
 	public void eineLoesung2()
 	{
 		double ergebnis = 1;
@@ -122,7 +122,7 @@ class GausJordanTest {
 		Trennstriche();
 	}
 
-	@Test //Usecase: das LGS hat unendlich viele Lösungen
+	@Test //Usecase: das LGS hat unendlich viele Lï¿½sungen
 	public void unendlichLoesungen1()
 	{
 		double ergebnis = 2;
@@ -133,7 +133,7 @@ class GausJordanTest {
 		Trennstriche();
 	}
 
-	@Test //Usecase: das LGS hat unendlich viele Lösungen (LGS wurde mit anderen Werten gefüllt)
+	@Test //Usecase: das LGS hat unendlich viele Lï¿½sungen (LGS wurde mit anderen Werten gefï¿½llt)
 	public void unendlichLoesungen2()
 	{
 		double ergebnis = 2;
@@ -144,7 +144,7 @@ class GausJordanTest {
 		Trennstriche();
 	}
 
-	@Test //Usecase: das LGS hat keine Lösung
+	@Test //Usecase: das LGS hat keine Lï¿½sung
 	public void keineLoesung1()
 	{
 		double ergebnis = 3;
@@ -155,7 +155,7 @@ class GausJordanTest {
 		Trennstriche();
 	}
 
-	@Test //Usecase: das LGS hat keine Lösung (LGS wurde mit anderen Werten gefüllt)
+	@Test //Usecase: das LGS hat keine Lï¿½sung (LGS wurde mit anderen Werten gefï¿½llt)
 	public void keineLoesung2()
 	{
 		double ergebnis = 3;
@@ -166,10 +166,10 @@ class GausJordanTest {
 		Trennstriche();
 	}
 
-	@Test //Lässt den Benutzer ein eigenes LGS eingeben, welches vom Programm wenn möglich gelöst wird
+	@Test //Lï¿½sst den Benutzer ein eigenes LGS eingeben, welches vom Programm wenn mï¿½glich gelï¿½st wird
 	public void eigenesLGS()
 	{
-		System.out.println("Wollen Sie ein eigenes LGS lösen lassen? (J/n)");
+		System.out.println("Wollen Sie ein eigenes LGS lï¿½sen lassen? (J/n)");
 		Scanner scan = new Scanner( System.in );
 		String string = scan.nextLine();
 		if(string.equals("j") || string.equals("J") || string.equals(""))
