@@ -14,17 +14,11 @@ public class GaussJordan
 		{
 			for(int j = 1; j <= 3; j++)
 			{
-				System.out.println("\nEnter the value for x:" + i + "," + j);
-				switch(i)
-				{
-				case 1:
-					row1[j-1] = gj.readNumber();
-					break;
-				case 2:
-					row2[j-1] = gj.readNumber();
-					break;
-				case 3:
-					row3[j-1] = gj.readNumber();
+				System.out.println("\nEnter the value for x" + i + "," + j);
+				switch (i) {
+					case 1 -> row1[j - 1] = gj.readNumber();
+					case 2 -> row2[j - 1] = gj.readNumber();
+					case 3 -> row3[j - 1] = gj.readNumber();
 				}
 			}
 		}
@@ -57,7 +51,7 @@ public class GaussJordan
 
 		if(string.equals("y") || string.equals("Y") || string.equals("")) //query whether the user wants to continue
 		{
-			rechnen(row1, row2, row3);
+			calculate(row1, row2, row3);
 		}
 		else
 		{
@@ -102,15 +96,15 @@ public class GaussJordan
 	Parameters: 		rowX, rowY, rowZ
 	Return value: 		Returns an array with 4 entries. The 4th entry of the array indicates whether there was one, no or infinite solutions.
 						In the case of one solution, the values are in the first three array entries*/
-	public double[] rechnen(double[] rowX, double[] rowY, double[] rowZ)
+	public double[] calculate(double[] rowX, double[] rowY, double[] rowZ)
 	{
-		GaussJordan gj = new GaussJordan(); //Objekt der Klasse Gausjordan wird erstellt
+		GaussJordan gj = new GaussJordan();
 		double[] row1 = rowX;
 		double[] row2 = rowY;
 		double[] row3 = rowZ;
 		double[] result = {0, 0, 0, 0};
 		String[] variablesVector = {"x", "y", "z"};
-		System.out.println("EINGABE:");
+		System.out.println("Input:");
 		gj.printLine(row1, row2, row3);	
 		int i = 0;
 		while(i <= 8)
@@ -165,18 +159,18 @@ public class GaussJordan
 
 				switch (gj.checkResult(row1, row2, row3)) //At this point in the program, the elimination process is over. If you look at the linear system you can say exactly how many solutions there are.
 				{
-				case 2: //This is where a jump is made if the linear system has an infinite number of solutions
-					gj.printLine(row1, row2, row3);
-					System.out.println("\nThere are an infinite number of solutions.\n");
-					result[3] = 2;
-					i = 9;
-					break;
-				case 3: //This is where a jump is made if the linear system has no solution
-					gj.printLine(row1, row2, row3);
-					System.out.println("\nThere is no solution.\n");
-					result[3] = 3;
-					i = 9;
-					break;
+					case 2 -> { //This is where a jump is made if the linear system has an infinite number of solutions
+						gj.printLine(row1, row2, row3);
+						System.out.println("\nThere are an infinite number of solutions.\n");
+						result[3] = 2;
+						i = 9;
+					}
+					case 3 -> { //This is where a jump is made if the linear system has no solution
+						gj.printLine(row1, row2, row3);
+						System.out.println("\nThere is no solution.\n");
+						result[3] = 3;
+						i = 9;
+					}
 				}
 				break;
 			case 5:
@@ -269,19 +263,12 @@ public class GaussJordan
 	Return value: 		Returns the new line with the resulting one*/
 	public double[] getTheOne(double[] row, int whichColumn)
 	{
-		double divisor = 1;
-		switch(whichColumn)
-		{
-		case 1:
-			divisor = row[0];
-			break;
-		case 2:
-			divisor = row[1];
-			break;
-		case 3:
-			divisor = row[2];
-			break;
-		}
+		double divisor = switch (whichColumn) {
+			case 1 -> row[0];
+			case 2 -> row[1];
+			case 3 -> row[2];
+			default -> 1;
+		};
 		row[0] = row[0] / divisor;
 		row[1] = row[1] / divisor;
 		row[2] = row[2] / divisor;

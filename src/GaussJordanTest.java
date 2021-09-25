@@ -91,7 +91,7 @@ class GaussJordanTest {
 		double[] rowx = {-3,  5, 6, -8};
 		double[] rowy = { 9, -9, 3, -6};
 		double[] rowz = { 9, -5, 6, -4};
-		double[] ergebnisLGS = gj.rechnen(rowx, rowy, rowz);
+		double[] ergebnisLGS = gj.calculate(rowx, rowy, rowz);
 
 		Assertions.assertEquals(2, ergebnisLGS[0]);
 		Assertions.assertEquals(2, ergebnisLGS[1]);
@@ -107,7 +107,7 @@ class GaussJordanTest {
 		double[] rowx = { 2, -9, -3,  0};
 		double[] rowy = {-2,  1,  3, -8};
 		double[] rowz = { 1,  7, -2,  0};
-		double[] ergebnisLGS = gj.rechnen(rowx, rowy, rowz);
+		double[] ergebnisLGS = gj.calculate(rowx, rowy, rowz);
 
 		Assertions.assertEquals(39, ergebnisLGS[0]);
 		Assertions.assertEquals(1, ergebnisLGS[1]);
@@ -123,7 +123,7 @@ class GaussJordanTest {
 		double[] rowx = {1, 2, 3, 3};
 		double[] rowy = {4, 5, 6, 6};
 		double[] rowz = {7, 8, 9, 9};
-		Assertions.assertEquals((gj.rechnen(rowx, rowy, rowz))[3], ergebnis);
+		Assertions.assertEquals((gj.calculate(rowx, rowy, rowz))[3], ergebnis);
 		seperators();
 	}
 
@@ -134,7 +134,7 @@ class GaussJordanTest {
 		double[] rowx = {-9, 1, -6, -8};
 		double[] rowy = { 3, 0, -2,  7};
 		double[] rowz = {-3, 0,  2, -7};
-		Assertions.assertEquals((gj.rechnen(rowx, rowy, rowz))[3], ergebnis);
+		Assertions.assertEquals((gj.calculate(rowx, rowy, rowz))[3], ergebnis);
 		seperators();
 	}
 
@@ -145,7 +145,7 @@ class GaussJordanTest {
 		double[] rowx = {1, 2, 3, 2};
 		double[] rowy = {4, 5, 6, 1};
 		double[] rowz = {7, 8, 9, 2};
-		Assertions.assertEquals((gj.rechnen(rowx, rowy, rowz))[3], ergebnis);
+		Assertions.assertEquals((gj.calculate(rowx, rowy, rowz))[3], ergebnis);
 		seperators();
 	}
 
@@ -156,7 +156,7 @@ class GaussJordanTest {
 		double[] rowx = {-1, -2,  0,  0};
 		double[] rowy = { 4, -1, -2, -8};
 		double[] rowz = { 7, -4, -4, -4};
-		Assertions.assertEquals((gj.rechnen(rowx, rowy, rowz))[3], ergebnis);
+		Assertions.assertEquals((gj.calculate(rowx, rowy, rowz))[3], ergebnis);
 		seperators();
 	}
 	
