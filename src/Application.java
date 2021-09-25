@@ -3,7 +3,7 @@ public class Application {
         GaussJordan gj = new GaussJordan();
         if(args.length == 0) {
             gj.consoleInput();
-        } else if(args.length != 10) {
+        } else if(args.length != 8) {
             System.out.println("The entered arguments are not correct.");
             System.out.println("\nProgram is terminated...");
             System.exit(0);
@@ -22,18 +22,17 @@ public class Application {
     }
 
     private static String[] collectArguments(String[] args) throws Exception {
-        if(args.length != 10) {
+        if(args.length != 8) {
             throw new Exception("The program needs all required arguments");
         }
 
-        String[] arguments = new String[5];
+        String[] arguments = new String[4];
         for(int i = 0; i < args.length; i = i+2) {
             switch (args[i]) {
                 case "-row1" -> arguments[0] = args[i + 1];
                 case "-row2" -> arguments[1] = args[i + 1];
                 case "-row3" -> arguments[2] = args[i + 1];
                 case "-resultsVector" -> arguments[3] = args[i + 1];
-                case "-naming" -> arguments[4] = args[i + 1];
                 default -> throw new Exception("The program needs all required arguments");
             }
         }
